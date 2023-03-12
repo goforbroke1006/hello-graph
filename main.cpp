@@ -20,16 +20,20 @@ int main() {
         graph.addEdge(vertexId2, vertexId1, weight);
     }
 
-    std::string vertexStart, vertexDestination;
-    std::cin >> vertexStart >> vertexDestination;
+    std::cout << "========== Graph source stat ==========" << std::endl;
+    std::cout << "Vertices: " << graph.getVertices().size() << std::endl;
+
+    std::string startVertexID, destVertexID;
+    std::cin >> startVertexID >> destVertexID;
 
     std::map<Vertex *, WeighType> dist;
     std::map<Vertex *, Edge> pred;
 
-    Dijkstra(graph, graph.get(vertexStart), dist, pred);
+    Dijkstra(graph, graph.get(startVertexID), dist, pred);
 
-    std::cout << dist << std::endl;
-    std::cout << pred << std::endl;
+    std::cout << "Way between: " << startVertexID << " and " << destVertexID << std::endl;
+    std::cout << "Distance:    " << dist[graph.get(destVertexID)] << std::endl;
+    std::cout << "Path points: " << extractPath(graph.get(startVertexID), graph.get(destVertexID), pred) << std::endl;
 
     return 0;
 }

@@ -9,6 +9,7 @@
 #include <cfloat>
 #include <queue>
 #include <ostream>
+#include <algorithm> // std::reverse(...)
 
 #include "graph_source.h"
 
@@ -60,6 +61,40 @@ std::ostream &operator<<(std::ostream &os, const std::map<Vertex *, Edge> &pred)
         if (it != --pred.end())
             os << std::endl;
     }
+    return os;
+}
+
+std::vector<Vertex *>
+extractPath(Vertex *const start, Vertex *const destination, const std::map<Vertex *, Edge> &pred) {
+    std::vector<Vertex *> result;
+
+    Vertex *localDestination = destination;
+    while (true) {
+        result.push_back(localDestination);
+
+        if (localDestination == start)
+            break; // find full chain
+
+        const auto &it = pred.find(localDestination);
+        if (it == pred.end())
+            return {};
+
+        localDestination = (*it).second.v1;
+    }
+
+    std::reverse(result.begin(), result.end());
+
+    return result;
+}
+
+std::ostream &operator<<(std::ostream &os, const std::vector<Vertex *> &path) {
+    os << "[ ";
+    for (auto it = path.begin(); it != path.end(); ++it) {
+        os << (*it)->id;
+        if (it != --path.end())
+            os << " -> ";
+    }
+    os << " ]";
     return os;
 }
 

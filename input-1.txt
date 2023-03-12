@@ -1,14 +1,20 @@
-11
-London    Berlin       931.12
-Moscow    Barcelona   3007.97
-Vienna    Barcelona   1349.43
-Warsaw    Barcelona   1862.73
-Moscow    Berlin      1607.01
-Munich    Berlin       504.49
-Paris     Berlin       877.76
-London    Paris        343.52
-Paris     Prague       881.39
-Paris     Rome        1106.16
-Kiev      Berlin      1203.12
+17
+London      Berlin       931.12
+London      Paris        343.52
+London      Prague      1031.95
+Barcelona   Moscow      3007.97
+Barcelona   Vienna      1349.43
+Barcelona   Madrid       503.88
+Barcelona   Warsaw      1862.73
+Berlin      Moscow      1607.01
+Berlin      Munich       504.49
+Paris       Berlin       877.76
+Paris       Prague       881.39
+Paris       Rome        1106.16
+Kiev        Warsaw       688.47
+Kiev        Vienna      1052.92
+Kiev        Prague      1142.11
+Kiev        Munich      1392.98
+Istanbul    Kiev        1056.03
 
-London    Kiev
+London      Kiev
