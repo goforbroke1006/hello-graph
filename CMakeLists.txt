@@ -3,7 +3,7 @@ project(hello-graph)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_subdirectory(examples/flight-ticket)
 
 set(GTEST_VERSION 1.12.1)
 if (NOT EXISTS ${PROJECT_BINARY_DIR}/googletest-release-${GTEST_VERSION})

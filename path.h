@@ -1,5 +1,5 @@
 //
-// Created by gofor on 12.03.2023.
+// Created by goforbroke on 12.03.2023.
 //
 
 #ifndef HELLO_GRAPH_PATH_H
@@ -20,20 +20,20 @@ public:
         mCyclical = false;
     }
 
-    void add(Edge e) {
-        mPath.push_back(e.v2);
-        mLength += e.w;
+    void add(Edge *e) {
+        mPath.push_back(e->getVertexTo());
+        mLength += e->getWeight();
 
-        auto it = mEntries.find(e.v2);
+        auto it = mEntries.find(e->getVertexTo());
         if (it == mEntries.end()) {
-            mEntries[e.v2] = true;
+            mEntries[e->getVertexTo()] = true;
             return;
         }
 
         mCyclical = true;
     }
 
-    [[nodiscard]] uint32_t getLength() const { return mLength; }
+    [[nodiscard]] double getLength() const { return mLength; }
 
     [[nodiscard]] bool isCyclical() const { return mCyclical; }
 
@@ -42,9 +42,9 @@ public:
     }
 
 private:
-    std::vector<Vertex *> mPath;
-    uint32_t mLength;
-    std::map<Vertex *, bool> mEntries;
+    std::vector<const Vertex *> mPath;
+    double mLength;
+    std::map<const Vertex *, bool> mEntries;
     bool mCyclical;
 
     friend std::ostream &operator<<(std::ostream &os, const Path &path);
